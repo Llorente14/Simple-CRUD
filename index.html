@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table Siswa</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="cont">
+      <table class="table">
+        <tr>
+          <th>NIM</th>
+          <th>Nama</th>
+          <th>Prodi</th>
+        </tr>
+        <!-- <tr>
+          <td>535240143</td>
+          <td>Axel</td>
+          <td>TI</td>
+        </tr> -->
+      </table>
+      <button class="add-btn">Add Siswa</button>
+    </div>
+    <div class="forms">
+      <form action="">
+        <div class="group-form">
+          <label for="nim">NIM</label>
+          <input type="tel" name="nim" id="nim" class="nim" />
+        </div>
+        <div class="group-form">
+          <label for="nama">Nama</label>
+          <input type="text" name="nama" id="nama" class="nama" />
+        </div>
+        <div class="group-form">
+          <label for="prodi">Prodi</label>
+          <input type="text" name="prodi" id="prodi" class="prodi" />
+        </div>
+        <div class="btn-confirm">
+          <button type="button" class="btn delete">
+            <img src="./image/remove.png" alt="" />
+          </button>
+          <button class="btn cancel" id="cancel" type="button">Cancel</button>
+          <button class="btn submit" type="submit">Add</button>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
