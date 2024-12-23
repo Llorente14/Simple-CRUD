@@ -29,7 +29,6 @@ addBtn.addEventListener("click", (e) => {
   e.preventDefault();
   inputNim.value = "";
   inputNama.value = "";
-  inputProdi.value = "";
   submitBtn.style.display = "flex"; //A = V
   delBtn.style.display = "none";
   updateBtn.style.display = "none";
@@ -44,13 +43,23 @@ cancelBtn.addEventListener("click", (e) => {
 //Add to table
 const inputNim = document.querySelector(".nim");
 const inputNama = document.querySelector(".nama");
-const inputProdi = document.querySelector(".prodi");
+function getSelectedProdi() {
+  const radioProdi = document.getElementsByName("prodi");
+  let inputProdi = null;
+  radioProdi.forEach((radio) => {
+    if (radio.checked) {
+      inputProdi = radio.value;
+    }
+  });
+  return inputProdi;
+}
 const submitBtn = document.querySelector(".btn.submit");
 function addData() {
+  const inputProdi = getSelectedProdi(); // Ngambil nilai dari loop radio
   if (
-    inputNim.value.trim() == "" ||
-    inputNama.value.trim() == "" ||
-    inputProdi.value.trim() == ""
+    inputNim.value.trim() === "" ||
+    inputNama.value.trim() === "" ||
+    !inputProdi
   ) {
     alert("Mohon isi yang benar");
   } else {
@@ -60,7 +69,7 @@ function addData() {
     let tdProdi = document.createElement("td");
     tdNim.textContent = inputNim.value;
     tdNama.textContent = inputNama.value;
-    tdProdi.textContent = inputProdi.value;
+    tdProdi.textContent = inputProdi;
     tr.appendChild(tdNim);
     tr.appendChild(tdNama);
     tr.appendChild(tdProdi);
@@ -68,11 +77,10 @@ function addData() {
     tableBody.appendChild(tr);
     inputNim.value = "";
     inputNama.value = "";
-    inputProdi.value = "";
     forms.classList.toggle("muncul");
-    submitBtn.style.display = "none"; // A= X
   }
 }
+
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
   addData();
@@ -117,23 +125,34 @@ function openFormUpdate(e) {
   const rowData = Array.from(targetRow.children).map(
     (kolom) => kolom.textContent
   );
-  console.log("Target Row: ", targetRow); // Pastikan targetRow valid
-  console.log("Row Data: ", rowData);
-  console.log(rowData);
+
   inputNim.value = rowData[0];
   inputNama.value = rowData[1];
-  inputProdi.value = rowData[2];
+  const radios = document.getElementsByName("prodi");
+  radios.forEach((radio) => {
+    radio.checked = radio.value === rowData[2];
+  });
   if (!forms.classList.contains("muncul")) {
     forms.classList.add("muncul");
   }
 }
+
 updateBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  console.log("Target Row: ", targetRow); // Pastikan targetRow valid
+  const updatedProdi = getSelectedProdi();
+
+  if (
+    inputNim.value.trim() === "" ||
+    inputNama.value.trim() === "" ||
+    !updatedProdi
+  ) {
+    alert("Mohon isi semua data dengan benar.");
+    return;
+  } // Validasi agar update form tidak kosong, jika kosong ada alert
 
   targetRow.children[0].textContent = inputNim.value;
   targetRow.children[1].textContent = inputNama.value;
-  targetRow.children[2].textContent = inputProdi.value;
+  targetRow.children[2].textContent = updatedProdi;
 
   forms.classList.remove("muncul");
   updateBtn.style.display = "none";

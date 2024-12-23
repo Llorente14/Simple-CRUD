@@ -32,9 +32,23 @@
           <label for="nama">Nama</label>
           <input type="text" name="nama" id="nama" class="nama" />
         </div>
-        <div class="group-form">
-          <label for="prodi">Prodi</label>
-          <input type="text" name="prodi" id="prodi" class="prodi" />
+        <label class="prodi-label">Prodi</label>
+        <div class="group-form-radio">
+          <div class="group-radio">
+            <input
+              type="radio"
+              name="prodi"
+              value="TI"
+              id="TI"
+              class="prodi"
+              checked
+            />
+            <label for="TI">TI</label>
+          </div>
+          <div class="group-radio">
+            <input type="radio" name="prodi" value="SI" id="SI" class="prodi" />
+            <label for="SI">SI</label>
+          </div>
         </div>
         <div class="btn-confirm">
           <button type="button" class="btn delete">
