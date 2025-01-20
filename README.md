@@ -1,4 +1,4 @@
-Latihan CRUD simple untuk data dalam table. Merupakan projek kedua dengan JavaScript bootcamp UCCD.
+Latihan CRUD simple untuk data dalam table. 
 Hal Yang Didapat
 -Manipulasi DOM, seperti mengambil DOM, mengubah, menghapus DOM
 -Penggunaan e.target untuk table row yang ditekan
